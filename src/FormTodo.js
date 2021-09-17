@@ -1,21 +1,24 @@
 import React, {useState} from "react";
 
-const AddTodo=() => {
+const FormTodo=(p) => {
     const addTodoStyle={
         position:"fixed",
         bottom:10,
         display:"block",
         width:"100%"
     }
+    const [title,setTitle]=useState("")
 
-    const [title,setTitle]=useState("Belajar React")
     const handleSubmit=(e)=>{
         e.preventDefault()
-        const newTodo ={id:Math.random(), title:title, done:false}
-        console.log(newTodo)
-        alert(title)
-        setTitle("")
+        const newTodo ={
+            title:title, 
+            done:false
+        }
+        p.createTodo(newTodo);
+        setTitle('')
     }
+
     return(
         <div style={addTodoStyle}>
             <form onSubmit={handleSubmit}>
@@ -31,4 +34,4 @@ const AddTodo=() => {
     )
 }
 
-export default AddTodo;
+export default FormTodo;
